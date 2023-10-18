@@ -1,0 +1,896 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+
+}
+
+body {
+    color: #ededed;
+    background-color: #111;
+    font-family: 'poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* custom scroll bar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    margin-bottom: -80px;
+    width: 100%;
+    padding: 25px 10%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    transition: all .5s ease;
+}
+
+.header span {
+    color: crimson;
+}
+
+.header.sticky {
+
+    padding: 10px 10%;
+    background: crimson;
+}
+
+.sticky span {
+    color: #ededed;
+}
+
+.logo {
+    position: relative;
+    font-size: 35px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: default;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+}
+
+.navbar a {
+    display: inline-block;
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: .3s;
+    opacity: 0;
+    animation: slideTop .5s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+
+.navbar a:hover {
+    color: crimson;
+}
+
+.header.sticky .navbar a:hover {
+    color: #111;
+}
+
+/* menu Button */
+.menu-btn {
+    color: #fff;
+    font-size: 23px;
+    cursor: pointer;
+    display: none;
+}
+
+/* .menu-btn:hover {
+    color: crimson;
+} */
+
+.scroll-up-btn {
+    position: fixed;
+    height: 45px;
+    width: 42px;
+    background: crimson;
+    right: 30px;
+    bottom: 10px;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    z-index: 9999;
+    font-size: 30px;
+    border-radius: 6px;
+    border-bottom-width: 2px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.scroll-up-btn.show {
+    bottom: 30px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.scroll-up-btn:hover {
+    filter: brightness(90%);
+}
+
+.home {
+    position: relative;
+    width: 100%;
+    justify-content: space-between;
+    height: 100vh;
+    background: url(images/banner.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 70px 10% 0;
+    /* background-attachment: fixed; */
+}
+
+.home-content {
+    max-width: 600px;
+}
+
+.home-content h3:nth-of-type(2) {
+    margin-bottom: 30px;
+    animation: slideTop .5s ease forwards;
+    animation-delay: .7s;
+}
+
+.home-content h3 span {
+    color: crimson;
+}
+
+.home-content h3 {
+    font-size: 32px;
+    font-weight: 700;
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: .7s;
+}
+
+.home-content h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin: -3px 0;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.home-content p {
+    font-size: 20px;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.home-sci a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid crimson;
+    border-radius: 50%;
+    font-size: 20px;
+    color: crimson;
+    text-decoration: none;
+    transition: .5s ease;
+    margin: 30px 15px 30px 0;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+
+.home-sci a:hover {
+    background: crimson;
+    color: #111;
+    box-shadow: 0 0 20px crimson;
+}
+
+.btn-box {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 28px;
+    border: 1px solid crimson;
+    color: crimson;
+    border-radius: 40px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    opacity: 0;
+    animation: slideTop .5s ease forwards;
+    animation-delay: 2s;
+    box-shadow: 0 0 5px crimson, 0 0 25px crimson;
+}
+
+.btn-box:hover {
+    background-color: crimson;
+    color: #111;
+    box-shadow: 0 0 5px crimson, 0 0 25px crimson, 0 0 50px crimson, 0 0 100px crimson, 0 0 200px crimson;
+}
+
+.about {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.about-img img {
+    /* padding-bottom: 20px;
+    max-width: 630px;
+    height: auto;
+    width: 100%;
+    border-radius: 8px; */
+    transition: background 0.5s, transform 0.5s;
+    width: 100%;
+    margin-top: -70px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.about-img img:hover {
+    transform: translateY(-15px);
+}
+
+.about-text h2 {
+    font-size: 60px;
+}
+
+.about-text h2 span {
+    color: crimson;
+}
+
+.about-text h4 {
+    font-size: 29px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.7;
+    margin: 15px 0 30px;
+}
+
+.about-text p {
+    color: aliceblue;
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 4rem;
+    padding-right: 10px;
+
+}
+
+.services {
+    color: aliceblue;
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+}
+
+.sub-title {
+    text-align: center;
+    font-size: 60px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-weight: 600;
+}
+
+.sub-title span {
+    color: crimson;
+}
+
+.container2 {
+    padding: 90px;
+}
+
+.service-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(259px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+
+.service-list div {
+    background-color: transparent;
+    padding: 40px;
+    font-size: 13px;
+    font-weight: 13px;
+    border-radius: 20px;
+    border-right: 10px;
+    transition: background 0.5s, transform 0.5s;
+    box-shadow: 1px 1px 20px crimson, 1px 1px 40px red;
+}
+
+.service-list div i {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+.service-list div h2 {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.service-list div a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.read {
+    display: inline-block;
+    padding: 12px 28px;
+    background: crimson;
+    border-radius: 40px;
+    font-size: 16px;
+    color: #111;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0;
+    animation: slideTop .5s ease forwards;
+    animation-delay: 2s;
+    box-shadow: 0 0 5px crimson, 0 0 25px crimson;
+}
+
+.read:hover {
+    box-shadow: 0 0 5px crimson, 0 0 25px crimson, 0 0 50px crimson, 0 0 100px crimson, 0 0 200px crimson;
+}
+
+.service-list div:hover {
+    transform: translateY(-10px);
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container1 {
+    width: 50%;
+    height: 500px;
+    padding: 75px 50px;
+    /* margin-left: px; */
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.heading1 {
+    font-size: 36px;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-thickness: 5px;
+    margin-bottom: 50px;
+}
+
+.bar {
+    font-size: 23px;
+}
+
+.technical-bars .bar {
+    margin-top: 40px 0;
+}
+
+.technical-bars .bar:first-child {
+    margin-top: 0;
+}
+
+.technical-bars .bar:last-child {
+    margin-bottom: 0;
+}
+
+.technical-bars .bar .info {
+    margin-bottom: 5px;
+}
+
+.technical-bars .bar .info span {
+    font-size: 17px;
+    font-weight: 500;
+    animation: showText 0.5s 1s linear forwards;
+    opacity: 0;
+}
+
+.technical-bars .bar .progress-line {
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 5px;
+    background-color: aliceblue;
+    /* animation: animation 1s cubic-bezier(1, 0, 0, 5, 1) forwards; */
+    animation-name: animation;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(1, 0, 0, 5, 1);
+    animation-delay: forwards;
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes animation {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.technical-bars .bar .progress-line span {
+    height: 100%;
+    background-color: crimson;
+    position: absolute;
+    border-radius: 10px;
+    animation: animation 1s 1s cubic-bezier(1, 0, 0, 5, 1) forwards;
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+.progress-line.html span {
+    width: 90%;
+}
+
+.progress-line.css span {
+    width: 85%;
+}
+
+.progress-line.js span {
+    width: 65%;
+}
+
+.progress-line.react span {
+    width: 50%;
+}
+
+.progress-line.php span {
+    width: 70%;
+}
+
+.progress-line span::after {
+    position: absolute;
+    padding: 1px 8px;
+    background-color: crimson;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 3px;
+    top: -28px;
+    right: -20px;
+    animation: showText 0.5s 1.5s linear forwards;
+    opacity: 0;
+}
+
+.progress-line.html span::after {
+    content: "90%";
+}
+
+.progress-line.css span::after {
+    content: "85%";
+}
+
+.progress-line.js span::after {
+    content: "65%";
+}
+
+.progress-line.react span::after {
+    content: "50%";
+}
+
+.progress-line.php span::after {
+    content: "70%";
+}
+
+.progress-line span::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-top-color: crimson;
+    top: -10px;
+    right: 0;
+    animation: showText 0.5s 1.5s linear forwards;
+    opacity: 0;
+}
+
+
+@keyframes showText {
+    100% {
+        opacity: 1;
+    }
+}
+
+.radial-bars {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.radial-bars .radial-bar {
+    width: 50%;
+    height: 170px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.radial-bars .radial-bar svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 120px;
+    height: 160px;
+}
+
+.radial-bars .radial-bar .progress-bar {
+    stroke-width: 10;
+    stroke: #fff;
+    fill: transparent;
+    stroke-dasharray: 502;
+    stroke-dashoffset: 502;
+    stroke-linecap: round;
+    /* animation-name: animate-bar1;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: forwards; */
+    animation: animate-bar 1s linear forwards;
+}
+
+@keyframes animate-bar {
+    100% {
+        stroke-dashoffset: -1;
+    }
+}
+
+.path {
+    stroke-width: 10;
+    stroke: crimson;
+    fill: transparent;
+    stroke-dasharray: 502;
+    stroke-dashoffset: 502;
+    stroke-linecap: round;
+}
+
+.path-1 {
+    animation: animate-path1 1s 1s linear forwards;
+}
+
+.path-2 {
+    animation: animate-path2 1s 1s linear forwards;
+}
+
+.path-3 {
+    animation: animate-path3 1s 1s linear forwards;
+}
+
+.path-4 {
+    animation: animate-path4 1s 1s linear forwards;
+}
+
+@keyframes animate-path1 {
+    100% {
+        stroke-dashoffset: 50;
+    }
+}
+
+@keyframes animate-path2 {
+    100% {
+        stroke-dashoffset: 175;
+    }
+}
+
+@keyframes animate-path3 {
+    100% {
+        stroke-dashoffset: 125;
+    }
+}
+
+@keyframes animate-path4 {
+    100% {
+        stroke-dashoffset: 75;
+    }
+}
+
+.radial-bar .percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 17px;
+    font-weight: 500;
+    animation: showText 0.5s 1s linear forwards;
+    opacity: 0;
+}
+
+.radial-bar .text {
+    display: inline-block;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    left: 50px;
+    bottom: -5px;
+    transform: translateX(-50px);
+    font-size: 17px;
+    font-weight: 500;
+    animation: showText 0.5s 1s linear forwards;
+    opacity: 0;
+}
+
+/* .main-text{
+    padding-top:0px;
+    margin-top:0px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+} */
+/* .main-text h2{
+    font-size: 60px;
+    line-height: 1;
+    text-align: center;
+}
+.main-text h2 span{
+    color: crimson;
+} */
+/* .portfolio-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    grid-gap: 2.5rem;
+    margin-top: 0px;
+    padding: 70px;
+    align-items: center;
+    } */
+.row1 {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.row1 img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.layer {
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), crimson);
+    position: absolute;
+    border-radius: 8px;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 40px;
+    transition: height 0.5s;
+}
+
+.layer h5 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.layer p {
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.layer a {
+
+    text-decoration: none;
+}
+
+.layer i {
+    color: crimson;
+    margin-top: 20px;
+    font-size: 20px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.row1:hover image {
+    transform: scale(1.1);
+}
+
+.row1:hover .layer {
+    height: 100%;
+}
+
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slideTop {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slideBottom {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 947px) {
+    .container1{
+        width: 100%;
+    }
+    .menu-btn {
+        display: block;
+        z-index: 999;
+    }
+
+    .menu-btn i.active:before {
+        content: "\f00d";
+    }
+
+    .navbar .menu {
+        display: block;
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        left: -100%;
+        top: 0;
+        background: #111;
+        text-align: center;
+        padding-top: 80px;
+        transition: all 0.3s ease;
+    }
+
+    .header.sticky .navbar a:hover {
+        color: crimson;
+    }
+    .navbar .menu.active {
+        left: 0;
+    }
+
+    .navbar .menu {
+        display: block;
+    }
+
+    .navbar .menu a {
+        display: block;
+        margin: 20px 0;
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 500px) {
+    .home{
+        background: #111;
+    }
+    .scroll-up-btn {
+        right: 50px;
+        bottom: 50px;
+        height: 38px;
+        width: 35px;
+        font-size: 23px;
+        line-height: 38px;
+    }
+    .radial-bar .text {
+        width: 100%;
+        position: absolute;
+        text-align: center;
+        left: 50px;
+        bottom: -5px;
+        transform: translateX(-50px);
+        font-size: 14px;
+        font-weight: 500;
+        animation: showText 0.5s 1s linear forwards;
+        opacity: 0;
+    }
+    .home-content h3 {
+        font-size: 24px;
+        font-weight: 700;
+        opacity: 0;
+        animation: slideBottom 1s ease forwards;
+        animation-delay: .7s;
+    }
+    
+    .home-content h1 {
+        font-size: 40px;
+        font-weight: 700;
+        margin: -3px 0;
+        opacity: 0;
+        animation: slideRight 1s ease forwards;
+        animation-delay: 1s;
+    }
+    
+    .home-content p {    
+        font-size: 17px;
+        opacity: 0;
+        animation: slideLeft 1s ease forwards;
+        animation-delay: 1s;
+    }
+    .home-content p br {
+        display: none;
+    }
+    .container2 {
+        padding: 50px;
+    }
+    .layer p {
+        color: #fff;
+        font-size: 12px;
+        line-height: 1.3;
+    }
+}
